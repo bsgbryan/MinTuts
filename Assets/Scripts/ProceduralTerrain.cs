@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 public class ProceduralTerrain : MonoBehaviour {
 
-  [Range(10, 1000)] public int TerrainSize;
-  [Range( 2,  100)] public int TerrainHeight;
-  [Range( 5,  250)] public int CellSize;
+  [Range(10, 1000)] public int TerrainSize   = 100;
+  [Range( 2,  100)] public int TerrainHeight =  50;
+  [Range( 5,  250)] public int CellSize      =  10;
 
   private static int TerrainsGenerated = 0;
 
