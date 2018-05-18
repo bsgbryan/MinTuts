@@ -6,7 +6,10 @@ using System.Collections.Generic;
 public class ProceduralTerrain : MonoBehaviour {
 
   [Range(10, 1000)] public int TerrainSize;
+  [Range( 2,  100)] public int TerrainHeight;
   [Range( 5,  250)] public int CellSize;
+
+  private static int TerrainsGenerated = 0;
 
   public void GenerateTerrain() {
     int x_segments = TerrainSize / CellSize;
@@ -57,6 +60,13 @@ public class ProceduralTerrain : MonoBehaviour {
         triangles[index5] = index5;
       }
     }
+
+    Mesh mesh = new Mesh { name = $"Procedural Terrain {++TerrainsGenerated}" };
+
+    mesh.SetVertices(vertices);
+    mesh.SetTriangles(triangles, 0);
+
+    GetComponent<MeshFilter>().mesh = mesh;
   }
 
   private float GetHeight(float x, float z, int x_segments, int z_segments) {
