@@ -29,4 +29,4 @@ Notes
 =====
 
 * Unity and git have been setup according to [this](https://robots.thoughtbot.com/how-to-git-with-unity)
-* This project was created in, and should only be run in, Unity 2018.1.0f2 or newer
+* This project was created in, and should only be run in, [Unity](https://store.unity.com/download?ref=personal) 2018.1.0f2 or newer
