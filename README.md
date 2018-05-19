@@ -25,6 +25,8 @@ MinTuts uses GitHub's inline diff comments instead of code comments. There are a
 3. inline diff comments don't get in code's way - code comments can make reading code difficult, especially if there are a lot of them and/or they are long. Inline diff comments can be as plentiful and long as we want - they will never obscure or get in the way of the code they relate to.
 4. inline diff comments encourage questions and discussion - building on point 3, because inline diff comments never get in the way of code we are free to use them as Q&A/discussion forums. Such activity only adds value to the codebase.
 
+**_NOTE_** To view inline diff comments, simply click/tap on the the _commits_ nav item (_nead the top-left of the page_). You could also follow this [link](https://github.com/bsgbryan/MinTuts/commits/master) to view all the commits to the `master` branch. Commits that have a text bubble icon and number immediatly to the left of their clipboard icon hame comments. Click/tap on the commit hash (_immediatly to the right of the clipboard icon_) to view that commit and its comments.
+
 Notes
 =====
 
