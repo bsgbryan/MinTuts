@@ -52,3 +52,7 @@
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
+
+# Managing line ending conversions
+# See http://git-scm.com/docs/gitattributes#_end-of-line_conversion
+* text=auto
