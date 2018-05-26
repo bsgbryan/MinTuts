@@ -89,6 +89,8 @@ public class ProceduralTerrain : MonoBehaviour {
     mesh.SetVertices(vertices);
     mesh.SetTriangles(triangles, 0);
 
+    mesh.RecalculateNormals();
+
     GetComponent<MeshFilter>().mesh = mesh;
   }
 }
