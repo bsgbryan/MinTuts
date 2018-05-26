@@ -22,10 +22,10 @@ public class ProceduralTerrain : MonoBehaviour {
 
     for (int x = 0; x < x_segments; x++) {
       for (int z = 0; z < z_segments; z++) {
-        float height00 = GetHeight(x + 0f, z + 0f, x_segments, z_segments);
-        float height01 = GetHeight(x + 0f, z + 1f, x_segments, z_segments);
-        float height10 = GetHeight(x + 1f, z + 0f, x_segments, z_segments);
-        float height11 = GetHeight(x + 1f, z + 1f, x_segments, z_segments);
+        float height00 = 0f;
+        float height01 = 0f;
+        float height10 = 0f;
+        float height11 = 0f;
 
         int x0 =  x      * CellSize;
         int z0 =  z      * CellSize;
@@ -68,8 +68,4 @@ public class ProceduralTerrain : MonoBehaviour {
 
     GetComponent<MeshFilter>().mesh = mesh;
   }
-
-  private float GetHeight(float x, float z, int x_segments, int z_segments) {
-    return Mathf.PerlinNoise(x / (float) x_segments, z / (float) z_segments);
-  } 
 }
