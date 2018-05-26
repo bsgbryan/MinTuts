@@ -8,6 +8,8 @@ public class ProceduralTerrainEditor: Editor {
   public override void OnInspectorGUI() {
     serializedObject.Update();
 
+    EditorGUI.BeginChangeCheck();
+
     EditorGUILayout.PropertyField(serializedObject.FindProperty("AutoUpdate"));
 
     EditorGUILayout.PropertyField(serializedObject.FindProperty("TerrainSize"));
@@ -25,7 +27,7 @@ public class ProceduralTerrainEditor: Editor {
 
     ProceduralTerrain procedural_terrain = serializedObject.targetObject as ProceduralTerrain;
 
-    if (GUILayout.Button("Generate") || procedural_terrain.AutoUpdate)
+    if (GUILayout.Button("Generate") || (EditorGUI.EndChangeCheck() && procedural_terrain.AutoUpdate))
       procedural_terrain.GenerateTerrain();
   }
 }
