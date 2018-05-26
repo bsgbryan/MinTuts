@@ -14,6 +14,8 @@ public class ProceduralTerrain : MonoBehaviour {
   [Range(0f,  1f)] public float Persistance = 0.5f;
   [Range(0f,  4f)] public float Lacunarity  = 2f;
 
+  public bool UseFalloffMap = false;
+
   private static int TerrainsGenerated = 0;
 
   public void GenerateTerrain() {
@@ -48,6 +50,13 @@ public class ProceduralTerrain : MonoBehaviour {
 
           amplitude *= Persistance;
           frequency *= Lacunarity;
+        }
+
+        if (UseFalloffMap) {
+          height00 -= Mathf.Clamp01(height00 - (Mathf.PerlinNoise(x,      z     ) - 0.5f)) * 0.5f;
+          height01 -= Mathf.Clamp01(height01 - (Mathf.PerlinNoise(x,      z + 1f) - 0.5f)) * 0.5f;
+          height10 -= Mathf.Clamp01(height10 - (Mathf.PerlinNoise(x + 1f, z     ) - 0.5f)) * 0.5f;
+          height11 -= Mathf.Clamp01(height11 - (Mathf.PerlinNoise(x + 1f, z + 1f) - 0.5f)) * 0.5f;
         }
 
         int x0 =  x      * CellSize;

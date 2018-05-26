@@ -17,6 +17,8 @@ public class ProceduralTerrainEditor: Editor {
     EditorGUILayout.PropertyField(serializedObject.FindProperty("Persistance"));
     EditorGUILayout.PropertyField(serializedObject.FindProperty("Lacunarity"));
 
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("UseFalloffMap"));
+
     if (GUILayout.Button("Generate"))
       (serializedObject.targetObject as ProceduralTerrain).GenerateTerrain();
 
