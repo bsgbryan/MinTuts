@@ -21,11 +21,11 @@ public class ProceduralTerrainEditor: Editor {
 
     EditorGUILayout.PropertyField(serializedObject.FindProperty("UseFalloffMap"));
 
+    serializedObject.ApplyModifiedProperties();
+
     ProceduralTerrain procedural_terrain = serializedObject.targetObject as ProceduralTerrain;
 
     if (GUILayout.Button("Generate") || procedural_terrain.AutoUpdate)
       procedural_terrain.GenerateTerrain();
-
-    serializedObject.ApplyModifiedProperties();
   }
 }
