@@ -12,6 +12,11 @@ public class ProceduralTerrainEditor: Editor {
     EditorGUILayout.PropertyField(serializedObject.FindProperty("TerrainHeight"));
     EditorGUILayout.PropertyField(serializedObject.FindProperty("CellSize"));
 
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("Octaves"));
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("Scale"));
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("Persistance"));
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("Lacunarity"));
+
     if (GUILayout.Button("Generate"))
       (serializedObject.targetObject as ProceduralTerrain).GenerateTerrain();
 
