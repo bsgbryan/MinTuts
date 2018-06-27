@@ -5,9 +5,18 @@ using System.Collections.Generic;
 
 public class ProceduralTerrain : MonoBehaviour {
 
+  public bool AutoUpdate = false;
+
   [Range(10, 1000)] public int TerrainSize   = 100;
   [Range( 2,  100)] public int TerrainHeight =  50;
   [Range( 5,  250)] public int CellSize      =  10;
+
+  [Range(1,  20 )] public int   Octaves     = 5;
+  [Range(1f, 30f)] public float Scale       = 3f;
+  [Range(0f,  1f)] public float Persistance = 0.5f;
+  [Range(0f,  4f)] public float Lacunarity  = 2f;
+
+  public bool UseFalloffMap = false;
 
   private static int TerrainsGenerated = 0;
 
@@ -22,10 +31,35 @@ public class ProceduralTerrain : MonoBehaviour {
 
     for (int x = 0; x < x_segments; x++) {
       for (int z = 0; z < z_segments; z++) {
-        float height00 = GetHeight(x + 0f, z + 0f, x_segments, z_segments);
-        float height01 = GetHeight(x + 0f, z + 1f, x_segments, z_segments);
-        float height10 = GetHeight(x + 1f, z + 0f, x_segments, z_segments);
-        float height11 = GetHeight(x + 1f, z + 1f, x_segments, z_segments);
+        float height00 = 0f;
+        float height01 = 0f;
+        float height10 = 0f;
+        float height11 = 0f;
+
+        float amplitude = 1f;
+        float frequency = 1f;
+
+        for (int i = Octaves; i > 0; i--) {
+          float octave_x0 =  x       / Scale * frequency;
+          float octave_z0 =  z       / Scale * frequency;
+          float octave_x1 = (x + 1f) / Scale * frequency;
+          float octave_z1 = (z + 1f) / Scale * frequency;
+
+          height00 += Mathf.PerlinNoise(octave_x0, octave_z0) * amplitude;
+          height01 += Mathf.PerlinNoise(octave_x0, octave_z1) * amplitude;
+          height10 += Mathf.PerlinNoise(octave_x1, octave_z0) * amplitude;
+          height11 += Mathf.PerlinNoise(octave_x1, octave_z1) * amplitude;
+
+          amplitude *= Persistance;
+          frequency *= Lacunarity;
+        }
+
+        if (UseFalloffMap) {
+          height00 -= Mathf.Clamp01(height00 - (Mathf.PerlinNoise(x,      z     ) - 0.5f)) * 0.5f;
+          height01 -= Mathf.Clamp01(height01 - (Mathf.PerlinNoise(x,      z + 1f) - 0.5f)) * 0.5f;
+          height10 -= Mathf.Clamp01(height10 - (Mathf.PerlinNoise(x + 1f, z     ) - 0.5f)) * 0.5f;
+          height11 -= Mathf.Clamp01(height11 - (Mathf.PerlinNoise(x + 1f, z + 1f) - 0.5f)) * 0.5f;
+        }
 
         int x0 =  x      * CellSize;
         int z0 =  z      * CellSize;
@@ -66,10 +100,8 @@ public class ProceduralTerrain : MonoBehaviour {
     mesh.SetVertices(vertices);
     mesh.SetTriangles(triangles, 0);
 
+    mesh.RecalculateNormals();
+
     GetComponent<MeshFilter>().mesh = mesh;
   }
-
-  private float GetHeight(float x, float z, int x_segments, int z_segments) {
-    return Mathf.PerlinNoise(x / (float) x_segments, z / (float) z_segments);
-  } 
 }
