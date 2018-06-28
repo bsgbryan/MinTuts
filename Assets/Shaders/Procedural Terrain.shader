@@ -29,6 +29,13 @@
           float r = 0;
           float g = 1;
           float b = 0;
+
+          if (p < 0.01) {
+            g = 0;
+            b = 1;
+            
+            y = float3(1, 1, 1);
+          }
           
           return float4(y * float3(r, g, b), 1);
         }
