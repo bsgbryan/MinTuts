@@ -25,8 +25,12 @@
         float4 frag(v2f i) : COLOR {
           float  p = i.wpos.y * 0.015;
           float3 y = float3(p, p, p);
+
+          float r = 0;
+          float g = 1;
+          float b = 0;
           
-          return float4(y, 1);
+          return float4(y * float3(r, g, b), 1);
         }
 
       ENDCG
