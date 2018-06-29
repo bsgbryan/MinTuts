@@ -36,8 +36,6 @@
             
             y = float3(1, 1, 1);
           } else if (p < 0.05) {
-            float q = -(i.wpos.y - 100) * 0.01;
-            
             r = -(p - 0.1);
             g = r;
             
