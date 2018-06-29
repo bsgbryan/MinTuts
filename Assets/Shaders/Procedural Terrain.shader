@@ -35,6 +35,13 @@
             b = 1;
             
             y = float3(1, 1, 1);
+          } else if (p < 0.05) {
+            float q = -(i.wpos.y - 100) * 0.01;
+            
+            r = -(p - 0.1);
+            g = r;
+            
+            y = float3(1, 1, 1);
           }
           
           return float4(y * float3(r, g, b), 1);
