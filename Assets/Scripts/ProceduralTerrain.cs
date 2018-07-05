@@ -16,6 +16,9 @@ public class ProceduralTerrain : MonoBehaviour {
   [Range(0f,  1f)] public float Persistance = 0.5f;
   [Range(0f,  4f)] public float Lacunarity  = 2f;
 
+  [Range( -1f, 1f)] public float Root      = 0.5f;
+  [Range(0.1f, 1f)] public float Magnitude = 0.5f;
+
   public bool UseFalloffMap = false;
 
   private static int TerrainsGenerated = 0;
@@ -55,10 +58,15 @@ public class ProceduralTerrain : MonoBehaviour {
         }
 
         if (UseFalloffMap) {
-          height00 -= Mathf.Clamp01(height00 - (Mathf.PerlinNoise(x,      z     ) - 0.5f)) * 0.5f;
-          height01 -= Mathf.Clamp01(height01 - (Mathf.PerlinNoise(x,      z + 1f) - 0.5f)) * 0.5f;
-          height10 -= Mathf.Clamp01(height10 - (Mathf.PerlinNoise(x + 1f, z     ) - 0.5f)) * 0.5f;
-          height11 -= Mathf.Clamp01(height11 - (Mathf.PerlinNoise(x + 1f, z + 1f) - 0.5f)) * 0.5f;
+          float falloff_00 = Mathf.PerlinNoise(x,      z     ) - Root;
+          float falloff_01 = Mathf.PerlinNoise(x,      z + 1f) - Root;
+          float falloff_10 = Mathf.PerlinNoise(x + 1f, z     ) - Root;
+          float falloff_11 = Mathf.PerlinNoise(x + 1f, z + 1f) - Root;
+
+          height00 -= Mathf.Clamp01(height00 - falloff_00) * Magnitude;
+          height01 -= Mathf.Clamp01(height01 - falloff_01) * Magnitude;
+          height10 -= Mathf.Clamp01(height10 - falloff_10) * Magnitude;
+          height11 -= Mathf.Clamp01(height11 - falloff_11) * Magnitude;
         }
 
         int x0 =  x      * CellSize;

@@ -22,6 +22,8 @@ public class ProceduralTerrainEditor: Editor {
     EditorGUILayout.PropertyField(serializedObject.FindProperty("Lacunarity"));
 
     EditorGUILayout.PropertyField(serializedObject.FindProperty("UseFalloffMap"));
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("Root"));
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("Magnitude"));
 
     serializedObject.ApplyModifiedProperties();
 
