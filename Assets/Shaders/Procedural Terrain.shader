@@ -37,10 +37,10 @@
 
         v2f vert(float4 vertex : POSITION) {
           v2f o;
-          
+
           o.pos  = UnityObjectToClipPos(vertex);
           o.wpos = mul(unity_ObjectToWorld, vertex);
-          
+
           return o;
         }
 
@@ -60,10 +60,10 @@
           } else if (p < _ShoreLimit) {
             r = -(p - (_ShoreLimit * _ShoreMultiplier));
             g = r;
-            
+
             y = float3(1, 1, 1);
           }
-          
+
           return float4(y * float3(r, g, b), 1);
         }
 
