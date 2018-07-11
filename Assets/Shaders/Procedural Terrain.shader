@@ -5,6 +5,10 @@
 
     _ShoreMultiplier    ("Shore Multiplier",     Range(1,      4   )) = 2
     _IntensityMultiplier("Intensity Multiplier", Range(0.0001, 0.02)) = 0.015
+
+    _RedChannel  ("Red Channel",   Range(0, 1)) = 0
+    _GreenChannel("Green Channel", Range(0, 1)) = 1
+    _BlueChannel ("Blue Channel",  Range(0, 1)) = 0
   }
 
   SubShader {
@@ -21,6 +25,10 @@
 
         float _ShoreMultiplier;
         float _IntensityMultiplier;
+
+        float _RedChannel;
+        float _GreenChannel;
+        float _BlueChannel;
 
         struct v2f {
           float4 pos  : SV_POSITION;
@@ -40,13 +48,13 @@
           float  p = i.wpos.y * _IntensityMultiplier;;
           float3 y = float3(p, p, p);
 
-          float r = 0;
-          float g = 1;
-          float b = 0;
+          float r = _RedChannel;
+          float g = _GreenChannel;
+          float b = _BlueChannel;
 
           if (p < _WaterLimit) {
-            g = 0;
-            b = 1;
+            g -= 1;
+            b += 1;
             
             y = float3(1, 1, 1);
           } else if (p < _ShoreLimit) {
