@@ -2,13 +2,6 @@
   Properties {
     _WaterLimit("Water Limit", Range(0.000001, 0.05)) = 0.01
     _ShoreLimit("Shore Limit", Range(0.05,     0.1 )) = 0.05
-
-    _RedChannel  ("Red Channel",   Range(0, 1)) = 0
-    _GreenChannel("Green Channel", Range(0, 1)) = 1
-    _BlueChannel ("Blue Channel",  Range(0, 1)) = 0
-
-    _ShoreMultiplier    ("Shore Multiplier",     Range(1,      4   )) = 2
-    _IntensityMultiplier("Intensity Multiplier", Range(0.0001, 0.02)) = 0.015
   }
 
   SubShader {
@@ -22,13 +15,6 @@
 
         float _WaterLimit;
         float _ShoreLimit;
-
-        float _RedChannel;
-        float _GreenChannel;
-        float _BlueChannel;
-
-        float _ShoreMultiplier;
-        float _IntensityMultiplier;
 
         struct v2f {
           float4 pos  : SV_POSITION;
@@ -45,20 +31,20 @@
         }
 
         float4 frag(v2f i) : COLOR {
-          float  p = i.wpos.y * _IntensityMultiplier;
+          float  p = i.wpos.y * 0.015;
           float3 y = float3(p, p, p);
 
-          float r = _RedChannel;
-          float g = _GreenChannel;
-          float b = _BlueChannel;
+          float r = 0;
+          float g = 1;
+          float b = 0;
 
           if (p < _WaterLimit) {
-            g -= 1;
-            b += 1;
-
+            g = 0;
+            b = 1;
+            
             y = float3(1, 1, 1);
           } else if (p < _ShoreLimit) {
-            r = -(p - (_ShoreLimit * _ShoreMultiplier));
+            r = -(p - 0.1);
             g = r;
 
             y = float3(1, 1, 1);
