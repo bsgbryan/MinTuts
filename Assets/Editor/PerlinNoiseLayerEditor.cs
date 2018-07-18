@@ -8,8 +8,8 @@ public class PerlinNoiseLayerEditor : Editor {
   public override void OnInspectorGUI() {
     serializedObject.Update();
 
-    EditorGUILayout.ObjectField(  serializedObject.FindProperty("Noise"),         new GUIContent("Noise"));
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("AutoUpdate"),    new GUIContent("Auto Update"));
+    EditorGUILayout.ObjectField(  serializedObject.FindProperty("Noise"),         new GUIContent("Noise")          );
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("AutoUpdate"),    new GUIContent("Auto Update")    );
     EditorGUILayout.PropertyField(serializedObject.FindProperty("UseFalloffMap"), new GUIContent("Use Falloff Map"));
 
     if (serializedObject.FindProperty("UseFalloffMap").boolValue == true)

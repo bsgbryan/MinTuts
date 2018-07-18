@@ -35,12 +35,12 @@ public class NoiseLayerPropertyDrawer : PropertyDrawer {
     var root_rect        = new Rect(left,  third_row,  half_width, position.height);
     var magnitude_rect   = new Rect(right, third_row,  half_width, position.height);
 
-    EditorGUI.PropertyField(octaves_rect,     property.FindPropertyRelative("Octaves"));
-    EditorGUI.PropertyField(scale_rect,       property.FindPropertyRelative("Scale"));
+    EditorGUI.PropertyField(octaves_rect,     property.FindPropertyRelative("Octaves")    );
+    EditorGUI.PropertyField(scale_rect,       property.FindPropertyRelative("Scale")      );
     EditorGUI.PropertyField(persistance_rect, property.FindPropertyRelative("Persistance"));
-    EditorGUI.PropertyField(lacunarity_rect,  property.FindPropertyRelative("Lacunarity"));
-    EditorGUI.PropertyField(root_rect,        property.FindPropertyRelative("Root"));
-    EditorGUI.PropertyField(magnitude_rect,   property.FindPropertyRelative("Magnitude"));
+    EditorGUI.PropertyField(lacunarity_rect,  property.FindPropertyRelative("Lacunarity") );
+    EditorGUI.PropertyField(root_rect,        property.FindPropertyRelative("Root")       );
+    EditorGUI.PropertyField(magnitude_rect,   property.FindPropertyRelative("Magnitude")  );
 
     EditorGUI.indentLevel = indent;
 

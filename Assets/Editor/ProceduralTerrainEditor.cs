@@ -1,4 +1,4 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -39,7 +39,7 @@ public class ProceduralTerrainEditor: Editor {
         GUIContent.none
       );
   }
-  
+
   public override void OnInspectorGUI() {
     serializedObject.Update();
 
@@ -47,9 +47,9 @@ public class ProceduralTerrainEditor: Editor {
 
     EditorGUI.BeginChangeCheck();
 
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("TerrainSize"));
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("TerrainSize")  );
     EditorGUILayout.PropertyField(serializedObject.FindProperty("TerrainHeight"));
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("CellSize"));
+    EditorGUILayout.PropertyField(serializedObject.FindProperty("CellSize")     );
 
     serializedObject.ApplyModifiedProperties();
 
