@@ -6,6 +6,9 @@
 Assets/AssetStoreTools*
 *.app/
 
+# NoiseLayer assets for MinTuts
+NoiseLayers*
+
 # Visual Studio cache directory
 .vs/
 
