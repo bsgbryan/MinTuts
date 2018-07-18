@@ -11,15 +11,7 @@ public class ProceduralTerrain : MonoBehaviour {
   [Range( 2,  100)] public int TerrainHeight =  50;
   [Range( 5,  250)] public int CellSize      =  10;
 
-  [Range(1,  20 )] public int   Octaves     = 5;
-  [Range(1f, 30f)] public float Scale       = 3f;
-  [Range(0f,  1f)] public float Persistance = 0.5f;
-  [Range(0f,  4f)] public float Lacunarity  = 2f;
-
-  [Range( -1f, 1f)] public float Root      = 0.5f;
-  [Range(0.1f, 1f)] public float Magnitude = 0.5f;
-
-  public bool UseFalloffMap = false;
+  public List<PerlinNoiseLayer> PerlinNoiseLayers;
 
   private static int TerrainsGenerated = 0;
 
@@ -42,31 +34,37 @@ public class ProceduralTerrain : MonoBehaviour {
         float amplitude = 1f;
         float frequency = 1f;
 
-        for (int i = Octaves; i > 0; i--) {
-          float octave_x0 =  x       / Scale * frequency;
-          float octave_z0 =  z       / Scale * frequency;
-          float octave_x1 = (x + 1f) / Scale * frequency;
-          float octave_z1 = (z + 1f) / Scale * frequency;
+        foreach (var layer in PerlinNoiseLayers) {
+          float scale = layer.Noise.Scale;
+
+          float octave_x0 =  x       / scale * frequency;
+          float octave_z0 =  z       / scale * frequency;
+          float octave_x1 = (x + 1f) / scale * frequency;
+          float octave_z1 = (z + 1f) / scale * frequency;
 
           height00 += Mathf.PerlinNoise(octave_x0, octave_z0) * amplitude;
           height01 += Mathf.PerlinNoise(octave_x0, octave_z1) * amplitude;
           height10 += Mathf.PerlinNoise(octave_x1, octave_z0) * amplitude;
           height11 += Mathf.PerlinNoise(octave_x1, octave_z1) * amplitude;
 
-          amplitude *= Persistance;
-          frequency *= Lacunarity;
-        }
+          amplitude *= layer.Noise.Persistance;
+          frequency *= layer.Noise.Lacunarity;
 
-        if (UseFalloffMap) {
-          float falloff_00 = Mathf.PerlinNoise(x,      z     ) - Root;
-          float falloff_01 = Mathf.PerlinNoise(x,      z + 1f) - Root;
-          float falloff_10 = Mathf.PerlinNoise(x + 1f, z     ) - Root;
-          float falloff_11 = Mathf.PerlinNoise(x + 1f, z + 1f) - Root;
+          if (layer.UseFalloffMap) {
+            var root = layer.FalloffMap.Root;
 
-          height00 -= Mathf.Clamp01(height00 - falloff_00) * Magnitude;
-          height01 -= Mathf.Clamp01(height01 - falloff_01) * Magnitude;
-          height10 -= Mathf.Clamp01(height10 - falloff_10) * Magnitude;
-          height11 -= Mathf.Clamp01(height11 - falloff_11) * Magnitude;
+            float falloff_00 = Mathf.PerlinNoise(x,      z     ) - root;
+            float falloff_01 = Mathf.PerlinNoise(x,      z + 1f) - root;
+            float falloff_10 = Mathf.PerlinNoise(x + 1f, z     ) - root;
+            float falloff_11 = Mathf.PerlinNoise(x + 1f, z + 1f) - root;
+
+            var magnitude = layer.FalloffMap.Magnitude;
+
+            height00 -= Mathf.Clamp01(height00 - falloff_00) * magnitude;
+            height01 -= Mathf.Clamp01(height01 - falloff_01) * magnitude;
+            height10 -= Mathf.Clamp01(height10 - falloff_10) * magnitude;
+            height11 -= Mathf.Clamp01(height11 - falloff_11) * magnitude;
+          }
         }
 
         int x0 =  x      * CellSize;

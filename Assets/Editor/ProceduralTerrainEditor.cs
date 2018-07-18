@@ -1,29 +1,55 @@
 ﻿using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 
-[CustomEditor(typeof(ProceduralTerrain))]
+[CustomEditor(typeof(ProceduralTerrain), true, isFallback = true)]
 [CanEditMultipleObjects]
 public class ProceduralTerrainEditor: Editor {
+
+  private ProceduralTerrain Terrain;
+
+  private ReorderableList PerlinNoiseLayers;
+
+  private void OnEnable() {
+    Terrain = (ProceduralTerrain) target;
+
+    PerlinNoiseLayers = new ReorderableList(
+      serializedObject,
+      serializedObject.FindProperty("PerlinNoiseLayers"),
+      true, true, true, true
+    );
+
+    PerlinNoiseLayers.drawHeaderCallback = rect =>
+			EditorGUI.LabelField(rect, "Perlin Noise Layers", EditorStyles.boldLabel);
+
+    PerlinNoiseLayers.drawElementCallback = (
+      Rect rect,
+      int index,
+      bool isActive,
+      bool isFocused
+    ) =>
+      EditorGUI.ObjectField(
+        new Rect (
+          rect.x,
+          rect.y,
+          rect.width,
+          EditorGUIUtility.singleLineHeight
+        ),
+        PerlinNoiseLayers.serializedProperty.GetArrayElementAtIndex(index),
+        GUIContent.none
+      );
+  }
   
   public override void OnInspectorGUI() {
     serializedObject.Update();
 
-    EditorGUI.BeginChangeCheck();
+    PerlinNoiseLayers.DoLayoutList();
 
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("AutoUpdate"));
+    EditorGUI.BeginChangeCheck();
 
     EditorGUILayout.PropertyField(serializedObject.FindProperty("TerrainSize"));
     EditorGUILayout.PropertyField(serializedObject.FindProperty("TerrainHeight"));
     EditorGUILayout.PropertyField(serializedObject.FindProperty("CellSize"));
-
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("Octaves"));
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("Scale"));
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("Persistance"));
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("Lacunarity"));
-
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("UseFalloffMap"));
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("Root"));
-    EditorGUILayout.PropertyField(serializedObject.FindProperty("Magnitude"));
 
     serializedObject.ApplyModifiedProperties();
 
