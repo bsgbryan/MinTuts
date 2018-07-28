@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c867327b792440586a1dbe6e8bfc08, type: 3}
+  m_Name: Foo
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  octaves: {fileID: 114008035003489854}
+  scale: {fileID: 114646437799395826}
+  persistance: {fileID: 114782287124661974}
+  lacunarity: {fileID: 114802413601310804}
+  root: {fileID: 114687951626390616}
+  magnitude: {fileID: 114452458732586542}
+  isHydrated: 1
+--- !u!114 &114008035003489854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808c728fc901741de8b2f6691fc9a9a2, type: 3}
+  m_Name: Octaves
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 10
+  val: 5
+  isHydrated: 1
+--- !u!114 &114452458732586542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Magnitude
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.5
+  isHydrated: 1
+--- !u!114 &114646437799395826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Scale
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.5
+  isHydrated: 1
+--- !u!114 &114687951626390616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Root
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.5
+  isHydrated: 1
+--- !u!114 &114782287124661974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Persistance
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.5
+  isHydrated: 1
+--- !u!114 &114802413601310804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Lacunarity
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.15
+  isHydrated: 1

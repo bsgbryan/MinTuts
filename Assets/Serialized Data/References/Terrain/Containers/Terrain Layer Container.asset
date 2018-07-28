@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77d98c23169146cfa3896085765f7b2, type: 3}
+  m_Name: Bar
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  isHydrated: 1
+  UseLocalExtrudeMap: 1
+  sharedExtrudeMap: {fileID: 0}
+  extrudeOctaves: {fileID: 114382180389821742}
+  extrudeScale: {fileID: 114722236651626844}
+  extrudePersistance: {fileID: 114911515150496630}
+  extrudeLacunarity: {fileID: 114472585232216056}
+  extrudeRoot: {fileID: 114662207430515324}
+  extrudeMagnitude: {fileID: 114487916471408444}
+--- !u!114 &114382180389821742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808c728fc901741de8b2f6691fc9a9a2, type: 3}
+  m_Name: Octaves
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 10
+  val: 5
+  isHydrated: 1
+--- !u!114 &114472585232216056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Lacunarity
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.5
+  isHydrated: 1
+--- !u!114 &114487916471408444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Magnitude
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.5
+  isHydrated: 1
+--- !u!114 &114662207430515324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Root
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.5
+  isHydrated: 1
+--- !u!114 &114722236651626844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Scale
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.5
+  isHydrated: 1
+--- !u!114 &114911515150496630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a3a8e17170e4d2cbdd48db4a8e188a, type: 3}
+  m_Name: Persistance
+  m_EditorClassIdentifier: 
+  UseLocal: 1
+  Shared: {fileID: 0}
+  min: 0
+  max: 1
+  val: 0.9456522
+  isHydrated: 1
