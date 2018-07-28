@@ -63,15 +63,15 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GreenChannel: 1
-    - _IntensityMultiplier: 0.01
+    - _GreenChannel: 0.856
+    - _IntensityMultiplier: 0.0113
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RedChannel: 0.13
-    - _ShoreLimit: 0.1
-    - _ShoreMultiplier: 2
+    - _RedChannel: 0.221
+    - _ShoreLimit: 0.0555
+    - _ShoreMultiplier: 1.97
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
